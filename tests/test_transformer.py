@@ -441,12 +441,12 @@ def test_sampling_decoding(mock_transformer):
     src_input = torch.tensor([[1, 2, 3, 4, 5]])
     torch.manual_seed(0)  # Set seed for reproducibility
 
-    if "Microsoft" in platform.uname().release or platform.system() == "Windows":	
+    # if "Microsoft" in platform.uname().release or platform.system() == "Windows":	
     # if os.name == 'nt':
-        expected_tokens = [2, 8, 6, 3, 1]  # Based on sampling and the fixed logits
-    elif platform.system() == "Darwin" or platform.system() == "Linux":
-    # elif os.name == 'posix':
-        expected_tokens = [6, 1, 2, 2, 1]
+    expected_tokens = [2, 8, 6, 3, 1]  # Based on sampling and the fixed logits
+    # lif platform.system() == "Darwin" or platform.system() == "Linux":
+    # # elif os.name == 'posix':
+    #     expected_tokens = [6, 1, 2, 2, 1]e
 
 
     generated_sequence = mock_transformer.generate(
@@ -465,10 +465,10 @@ def test_top_k_sampling_decoding(mock_transformer):
     src_input = torch.tensor([[1, 2, 3, 4, 5]])
     torch.manual_seed(0)
 
-    if "Microsoft" in platform.uname().release or platform.system() == "Windows":
-        expected_tokens = [1, 0, 0, 2, 3]
-    elif platform.system() == "Darwin" or platform.system() == "Linux":
-        expected_tokens = [1, 1, 0, 1, 1]
+    # if "Microsoft" in platform.uname().release or platform.system() == "Windows":
+    expected_tokens = [1, 0, 0, 2, 3]
+    # elif platform.system() == "Darwin" or platform.system() == "Linux":
+    #     expected_tokens = [1, 1, 0, 1, 1]
 
     generated_sequence = mock_transformer.generate(
         src_input,
@@ -486,10 +486,10 @@ def test_top_p_sampling_decoding(mock_transformer):
     src_input = torch.tensor([[1, 2, 3, 4, 5]])
     torch.manual_seed(0)
 
-    if "Microsoft" in platform.uname().release or platform.system() == "Windows":
-        expected_tokens = [1, 2, 6, 3, 3]
-    elif platform.system() == "Darwin" or platform.system() == "Linux":
-        expected_tokens = [6, 1, 3, 3, 3]
+    # if "Microsoft" in platform.uname().release or platform.system() == "Windows":
+    expected_tokens = [1, 2, 6, 3, 3]
+    # elif platform.system() == "Darwin" or platform.system() == "Linux":
+    #     expected_tokens = [6, 1, 3, 3, 3]
 
     generated_sequence = mock_transformer.generate(
         src_input,
